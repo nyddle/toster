@@ -1,0 +1,24 @@
+[
+  {
+    "model": "toster.user",
+    "pk": 1,
+    "fields": {
+      "name": "John"
+    }
+  },
+  {
+    "model": "toster.question",
+    "pk": 1,
+    "fields": {
+        "question" : "What?",
+        "pub_date" : "2009-11-11 11:11",
+        "views" : 1000,
+        "answered" : 0,
+        "rating" : 100,
+        "section" : "cooking",
+        "author" : 1
+    }
+  }
+]
+
+
