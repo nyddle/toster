@@ -1,7 +1,10 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import TemplateView
 
 from django.contrib import admin
 admin.autodiscover()
+
+from toster.views import QuestionView, QuestionListView
 
 urlpatterns = patterns('',
     # Examples:
@@ -9,4 +12,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^about/', TemplateView.as_view()),
+    url(r'^question/', QuestionView.as_view()),
+    url(r'^questions/', QuestionListView.as_view()),
 )
+
