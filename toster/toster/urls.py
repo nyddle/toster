@@ -6,6 +6,14 @@ admin.autodiscover()
 
 from toster.views import QuestionView, QuestionListView
 
+from rest_framework import routers
+from quickstart import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'questions', views.GroupViewSet)
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'toster.views.home', name='home'),
