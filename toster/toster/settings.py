@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
     'toster',
 )
 
@@ -87,3 +86,11 @@ STATIC_URL = '/static/'
 FIXTURE_DIRS = (
    '../fixtures/',
 )
+
+
+
+#    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10
+}
+
