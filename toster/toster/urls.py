@@ -10,9 +10,8 @@ from rest_framework import routers
 from toster import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'questions', views.GroupViewSet)
-
+router.register(r'questions', views.UserViewSet)
+router.register(r'questions', views.QuestionViewSet)
 
 urlpatterns = patterns('',
     # Examples:
