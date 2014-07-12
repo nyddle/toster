@@ -18,7 +18,7 @@ class QuestionView(View):
 
 class QuestionListView(ListView):
     model = Question
-
+    template_name = 'core/question_list.html'
 
 class QuestionViewSet(viewsets.ModelViewSet):
     """

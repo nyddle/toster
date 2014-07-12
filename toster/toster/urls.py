@@ -21,6 +21,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', TemplateView.as_view()),
     url(r'^question/', QuestionView.as_view()),
-    url(r'^questions/', QuestionListView.as_view()),
+    url(r'^questions/', QuestionListView.as_view(template_name='core/question_list.html')),
 )
 
