@@ -21,8 +21,9 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', TemplateView.as_view()),
-    url(r'^question/', QuestionView.as_view()),
-    url(r'^questions/$', QuestionListView.as_view()),
-    url(r'^users/$', UserListView.as_view()),
+    url(r'^question/(?P<questionid>.+)', QuestionView.as_view(), name='question'),
+    url(r'^user/(?P<username>.+)', QuestionView.as_view(), name='user'),
+    url(r'^questions/$', QuestionListView.as_view(), name='questions'),
+    url(r'^users/$', UserListView.as_view(), name='users'),
 )
 
