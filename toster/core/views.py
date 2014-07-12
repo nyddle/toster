@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.http import Http404
 from django.http import HttpResponseNotFound
 from django.views.generic import View
 from django.views.generic import ListView
@@ -13,17 +14,19 @@ class QuestionView(View):
     def get(self, request, questionid):
         try:
             question = Question.objects.get(pk=questionid)
-        except:
+        except Question.DoesNotExist:
             raise Http404
-        return render(request, 'core/question.html', { 'question' : question })
+        return render(request, 'core/question.html', {'question': question})
 
 class UserView(View):
-    #self.kwargs['year']
-    def get(self, request):
-        return HttpResponse('result')
+    model = User
+    def get(self, request, username):
+        try:
+            user = User.objects.get(name=username)
+        except User.DoesNotExist:
+            raise Http404
+        return render(request, 'core/user.html', {'user': user})
 
-    def post(self, request):
-        return HttpResponse('result')
 
 class QuestionListView(ListView):
     model = Question
