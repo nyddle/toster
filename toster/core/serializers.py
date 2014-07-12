@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from toster.models import Question, User
+from core.models import Question, User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

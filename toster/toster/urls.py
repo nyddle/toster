@@ -4,10 +4,10 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
-from toster.views import QuestionView, QuestionListView
+from core.views import QuestionView, QuestionListView
 
 from rest_framework import routers
-from toster import views
+from core import views
 
 router = routers.DefaultRouter()
 router.register(r'/api/users', views.UserViewSet)

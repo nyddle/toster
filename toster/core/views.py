@@ -2,10 +2,10 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.views.generic import ListView
 
-from toster.models import Question, User
+from core.models import Question, User
 
 from rest_framework import viewsets
-from toster.serializers import QuestionSerializer, UserSerializer
+from core.serializers import QuestionSerializer, UserSerializer
 
 class QuestionView(View):
     def get(self, request):
