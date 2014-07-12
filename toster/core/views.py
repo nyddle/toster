@@ -16,9 +16,13 @@ class QuestionView(View):
         # <view logic>
         return HttpResponse('result')
 
+
 class QuestionListView(ListView):
     model = Question
-    template_name = 'core/question_list.html'
+
+class UserListView(ListView):
+    model = Question
+
 
 class QuestionViewSet(viewsets.ModelViewSet):
     """
@@ -36,3 +40,11 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+class HomeView(View):
+    def get(self, request):
+        # <view logic>
+        return HttpResponse('result')
+
+    def post(self, request):
+        # <view logic>
+        return HttpResponse('result')

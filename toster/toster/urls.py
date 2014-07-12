@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
-from core.views import QuestionView, QuestionListView
+from core.views import QuestionView, QuestionListView, UserListView, HomeView
 
 from rest_framework import routers
 from core import views
@@ -15,12 +15,14 @@ router.register(r'/api/questions', views.QuestionViewSet)
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'toster.views.home', name='home'),
+    url(r'^$', HomeView.as_view()),
+    url(r'^home/$', HomeView.as_view(), name='home'),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', TemplateView.as_view()),
     url(r'^question/', QuestionView.as_view()),
-    url(r'^questions/', QuestionListView.as_view(template_name='core/question_list.html')),
+    url(r'^questions/$', QuestionListView.as_view()),
+    url(r'^users/$', UserListView.as_view()),
 )
 
