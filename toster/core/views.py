@@ -3,6 +3,8 @@ from django.http import Http404
 from django.http import HttpResponseNotFound
 from django.views.generic import View
 from django.views.generic import ListView
+from core.forms import AskQuestionForm
+from django.views.generic.edit import FormView, ProcessFormView
 
 from core.models import Question, User
 
@@ -59,3 +61,17 @@ class HomeView(View):
     def post(self, request):
         # <view logic>
         return HttpResponse('result')
+
+
+class AskQuestionView(FormView):
+    template_name = 'core/new_question.html'
+    form_class = AskQuestionForm
+    success_url = '/questions'
+    print("ASKING!!")
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        #print(form)
+        #question = form.cleaned_data['question']
+        #print(question)
+        return super(AskQuestionView, self).form_valid(form)
