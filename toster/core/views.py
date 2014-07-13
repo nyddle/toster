@@ -67,11 +67,6 @@ class AskQuestionView(FormView):
     template_name = 'core/new_question.html'
     form_class = AskQuestionForm
     success_url = '/questions'
-    print("ASKING!!")
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        #print(form)
-        #question = form.cleaned_data['question']
-        #print(question)
+        form.save()
         return super(AskQuestionView, self).form_valid(form)
