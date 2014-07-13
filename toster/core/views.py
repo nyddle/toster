@@ -4,7 +4,7 @@ from django.http import HttpResponseNotFound
 from django.views.generic import View
 from django.views.generic import ListView
 from core.forms import AskQuestionForm
-from django.views.generic.edit import FormView, ProcessFormView
+from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
 from core.models import Question, User
 
