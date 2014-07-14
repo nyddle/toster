@@ -2,6 +2,9 @@ from django.db import models
 
 class User(models.Model):
     name = models.CharField(max_length=200)
+    reg_date = models.DateTimeField('date registered', auto_now_add=True)
+    rating= models.IntegerField(default=0)
+    #details = models.CharField(max_length=1000)
 
 class Question(models.Model):
     question = models.CharField(max_length=200)

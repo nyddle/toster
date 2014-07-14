@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponseNotFound
 from django.views.generic import View
@@ -43,6 +43,13 @@ class PopularQuestionListView(ListView):
 
 class UserListView(ListView):
     model = User
+
+class UserQuestionListView(ListView):
+    model = Question
+
+    def get_queryset(self):
+        self.author = get_object_or_404(User, name=self.kwargs['username'])
+        return Question.objects.filter(author=self.author)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

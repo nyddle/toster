@@ -4,7 +4,8 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
-from core.views import QuestionView, UserView, QuestionListView, PopularQuestionListView, UserListView, HomeView, AskQuestionView
+from core.views import HomeView, QuestionView, UserView, QuestionListView, PopularQuestionListView, \
+                        UserListView, AskQuestionView, UserView, UserQuestionListView
 
 from rest_framework import routers
 from core import views
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^questions/latest/$', QuestionListView.as_view(), name='questions_latest'),
     url(r'^questions/popular/$', PopularQuestionListView.as_view(), name='questions_popular'),
     url(r'^questions/$', QuestionListView.as_view(), name='questions'),
+    url(r'^user/(?P<username>.+)/questions', UserQuestionListView.as_view(), name='user_questions'),
 
     url(r'^user/(?P<username>.+)', UserView.as_view(), name='user'),
     url(r'^users/$', UserListView.as_view(), name='users'),
