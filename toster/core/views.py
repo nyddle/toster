@@ -16,6 +16,8 @@ class QuestionView(View):
     def get(self, request, questionid):
         try:
             question = Question.objects.get(pk=questionid)
+            question.views += 1;
+            question.save()
         except Question.DoesNotExist:
             raise Http404
         return render(request, 'core/question.html', {'question': question})

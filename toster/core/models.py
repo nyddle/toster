@@ -5,7 +5,7 @@ class User(models.Model):
 
 class Question(models.Model):
     question = models.CharField(max_length=200)
-    #details = models.CharField(max_length=500)
+    details = models.CharField(max_length=500)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     views = models.IntegerField(default=0)
     answered = models.BooleanField(default=False)

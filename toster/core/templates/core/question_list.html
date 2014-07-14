@@ -5,9 +5,10 @@
     <ul>
         {% for question in object_list %}
             <li>
+             [ {{ question.rating }} <a href="/api/upvote/{{ questin.pk }} ">&#8593; </a> ]
              {{ question.question }} - <a href="/question/{{ question.id }}">more...</a>
              - by <a href="/user/{{ question.author.name }}">{{ question.author.name }}</a>
-            </li>
+            </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date }})</tt>
         {% endfor %}
     </ul>
 {% endblock %}
