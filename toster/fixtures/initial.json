@@ -1,13 +1,13 @@
 [
   {
-    "model": "toster.user",
+    "model": "core.user",
     "pk": 1,
     "fields": {
       "name": "John"
     }
   },
   {
-    "model": "toster.question",
+    "model": "core.question",
     "pk": 1,
     "fields": {
         "question" : "What?",
