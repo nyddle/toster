@@ -11,7 +11,6 @@
     "pk": 1,
     "fields": {
         "question" : "What?",
-        "details"  : "Some additional text",
         "pub_date" : "2009-11-11 11:11",
         "views" : 1000,
         "answered" : 0,

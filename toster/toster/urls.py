@@ -14,14 +14,12 @@ router.register(r'/api/users', views.UserViewSet)
 router.register(r'/api/questions', views.QuestionViewSet)
 
 urlpatterns = patterns('',
-    # Examples:
-    url(r'^$', HomeView.as_view()),
-    url(r'^home/$', HomeView.as_view(), name='home'),
-    url(r'^', include(router.urls)),
+    url(r'^$', QuestionListView.as_view(), name='home'),
+    url(r'^home/$', AskQuestionView.as_view(), name='home'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', TemplateView.as_view()),
-    url(r'^question/ask', AskQuestionView.as_view(), name='new_question'),
+    url(r'^question/ask', AskQuestionView.as_view(), name='ask_question'),
     url(r'^question/(?P<questionid>.+)', QuestionView.as_view(), name='question'),
     url(r'^user/(?P<username>.+)', UserView.as_view(), name='user'),
     url(r'^questions/$', QuestionListView.as_view(), name='questions'),

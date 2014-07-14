@@ -55,12 +55,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class HomeView(View):
     def get(self, request):
-        # <view logic>
-        return HttpResponse('result')
+        return render(request, 'base.html')
 
-    def post(self, request):
-        # <view logic>
-        return HttpResponse('result')
+
 
 
 class AskQuestionView(FormView):
