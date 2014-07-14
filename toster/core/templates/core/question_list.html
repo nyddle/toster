@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Questions</h2>
+    <h2>Questions</h2> ( <a href="{% url 'questions_popular' %}">popular</a> |  <a href="{% url 'questions_latest' %}">latest</a>  )
+    <br><br>
     <ul>
         {% for question in object_list %}
             <li>
              [ {{ question.rating }} <a href="/api/upvote/{{ questin.pk }} ">&#8593; </a> ]
              {{ question.question }} - <a href="/question/{{ question.id }}">more...</a>
              - by <a href="/user/{{ question.author.name }}">{{ question.author.name }}</a>
-            </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date }})</tt>
+            </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date | date }})</tt>
         {% endfor %}
     </ul>
 {% endblock %}

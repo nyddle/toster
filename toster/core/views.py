@@ -32,8 +32,14 @@ class UserView(View):
         return render(request, 'core/user.html', {'user': user})
 
 
+#TODO: merge with popular view
 class QuestionListView(ListView):
     model = Question
+    queryset = Question.objects.order_by('-pub_date')
+
+class PopularQuestionListView(ListView):
+    model = Question
+    queryset = Question.objects.order_by('-rating')
 
 class UserListView(ListView):
     model = User
@@ -58,8 +64,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class HomeView(View):
     def get(self, request):
         return render(request, 'base.html')
-
-
 
 
 class AskQuestionView(FormView):
