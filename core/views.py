@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+
 from django.http import Http404
 from django.http import HttpResponseNotFound
+
 from django.views.generic import View
 from django.views.generic import ListView
-from core.forms import AskQuestionForm
 from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
-from core.models import Question, User
-
 from rest_framework import viewsets
-from core.serializers import QuestionSerializer, UserSerializer
+
+from .forms import AskQuestionForm
+from .models import Question, User
+from .serializers import QuestionSerializer, UserSerializer
 
 class QuestionView(View):
     model = Question
