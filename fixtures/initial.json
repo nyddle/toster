@@ -3,7 +3,8 @@
     "model": "core.user",
     "pk": 1,
     "fields": {
-      "name": "John"
+      "name": "John",
+        "reg_date" : "2009-11-11 11:11",
     }
   },
   {
