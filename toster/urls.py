@@ -30,7 +30,7 @@ urlpatterns = patterns('',
 
     url(r'^home/$', AskQuestionView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^about/', TemplateView.as_view()),
+    url(r'^about/', TemplateView.as_view(template_name='about.html'), name='about'),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
