@@ -19,7 +19,13 @@
 
             {% for result in page.object_list %}
                 <p>
+                    {% if result.object.question %}
                     <a href="{{ result.object.get_absolute_url }}">{{ result.object.question }}</a>
+                    {% endif %}
+                    {% if result.object.name %}
+                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+                    {% endif %}
+
                 </p>
             {% empty %}
                 <p>No results found.</p>
