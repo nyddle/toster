@@ -39,6 +39,14 @@ class QuestionListView(ListView):
     model = Question
     queryset = Question.objects.order_by('-pub_date')
 
+    def get_queryset(self):
+        queryset = super(QuestionListView, self).get_queryset()
+        q = self.request.GET.get("q")
+
+        if q:
+            return queryset.filter(question__icontains=q)
+        return queryset
+
 class PopularQuestionListView(ListView):
     model = Question
     queryset = Question.objects.order_by('-rating')

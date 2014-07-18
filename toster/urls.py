@@ -32,6 +32,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/', TemplateView.as_view(template_name='about.html'), name='about'),
 
+    url(r'^search/$', QuestionListView.as_view(), name='search_results'),
+
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 )
