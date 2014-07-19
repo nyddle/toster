@@ -44,8 +44,10 @@ class QuestionListView(ListView):
 
     def get_queryset(self):
         queryset = super(QuestionListView, self).get_queryset()
+        if 'tag' in self.kwargs:
+            tag = self.kwargs['tag']
+            return queryset.filter(tags__name__in=[tag,])
         q = self.request.GET.get("q")
-
         if q:
             return queryset.filter(question__icontains=q)
         return queryset

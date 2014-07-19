@@ -38,7 +38,7 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^tags/', TagListView.as_view(template_name='core/tag_list.html'), name='tags'),
-    #url(r'^tag/(?P<tag>.+)', TemplateView.as_view(template_name='tag.html'), name='tag'),
+    url(r'^tag/(?P<tag>.+)', QuestionListView.as_view(template_name='question_list.html'), name='tag'),
 
 )
 
