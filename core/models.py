@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 class User(models.Model):
     name = models.CharField(max_length=200)
@@ -15,5 +16,6 @@ class Question(models.Model):
     rating= models.IntegerField(default=0)
     section = models.CharField(max_length=200)
     author = models.ForeignKey(User, default=1)
+    tags = TaggableManager()
 
 
