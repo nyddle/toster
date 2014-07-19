@@ -13,6 +13,8 @@ from .forms import AskQuestionForm
 from .models import Question, User
 from .serializers import QuestionSerializer, UserSerializer
 
+from taggit.models import Tag
+
 class QuestionView(View):
     model = Question
     def get(self, request, questionid):
@@ -91,3 +93,6 @@ class AskQuestionView(FormView):
     def form_valid(self, form):
         form.save()
         return super(AskQuestionView, self).form_valid(form)
+
+class TagListView(ListView):
+    model = Tag

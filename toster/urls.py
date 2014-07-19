@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from core.views import HomeView, QuestionView, UserView, QuestionListView, PopularQuestionListView, \
-                        UserListView, AskQuestionView, UserView, UserQuestionListView
+                        UserListView, AskQuestionView, UserView, UserQuestionListView, TagListView
 
 from rest_framework import routers
 from core import views
@@ -36,6 +36,9 @@ urlpatterns = patterns('',
     url(r'^search/', include('haystack.urls')),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    url(r'^tags/', TagListView.as_view(template_name='core/tag_list.html'), name='tags'),
+    #url(r'^tag/(?P<tag>.+)', TemplateView.as_view(template_name='tag.html'), name='tag'),
 
 )
 
