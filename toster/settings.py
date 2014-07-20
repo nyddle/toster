@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -23,11 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +38,7 @@ INSTALLED_APPS = (
     'haystack',
     'toster',
     'core',
+    'social_auth'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,9 +58,6 @@ WSGI_APPLICATION = 'toster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-
-
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/toster') }
 
 # Internationalization
@@ -88,8 +83,6 @@ FIXTURE_DIRS = (
    '../fixtures/',
 )
 
-
-
 #    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10
@@ -102,10 +95,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+# STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -124,3 +114,7 @@ SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
 }
 
+try:
+    from .local_settings import *
+except:
+    pass
