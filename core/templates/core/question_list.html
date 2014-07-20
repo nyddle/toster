@@ -10,6 +10,7 @@
              {{ question.question }} - <a href="/question/{{ question.id }}">more...</a>
              - by <a href="/user/{{ question.author.name }}">{{ question.author.name }}</a>
             </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date | date }})</tt>
+            tags: {% for tag in question.tags.all %} {{ tag }} {% endfor %}
         {% endfor %}
     </ul>
 {% endblock %}

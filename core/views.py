@@ -13,16 +13,18 @@ from .forms import AskQuestionForm
 from .models import Question, User
 from .serializers import QuestionSerializer, UserSerializer
 
+from taggit.models import Tag
 
 class QuestionView(View):
     model = Question
     def get(self, request, questionid):
         try:
             question = Question.objects.get(pk=questionid)
-            question.views += 1;
-            question.save()
         except Question.DoesNotExist:
             raise Http404
+        question.views += 1
+        question.save()
+
         return render(request, 'core/question.html', {'question': question})
 
 class UserView(View):
@@ -39,6 +41,16 @@ class UserView(View):
 class QuestionListView(ListView):
     model = Question
     queryset = Question.objects.order_by('-pub_date')
+
+    def get_queryset(self):
+        queryset = super(QuestionListView, self).get_queryset()
+        if 'tag' in self.kwargs:
+            tag = self.kwargs['tag']
+            return queryset.filter(tags__name__in=[tag,])
+        q = self.request.GET.get("q")
+        if q:
+            return queryset.filter(question__icontains=q)
+        return queryset
 
 class PopularQuestionListView(ListView):
     model = Question
@@ -83,3 +95,6 @@ class AskQuestionView(FormView):
     def form_valid(self, form):
         form.save()
         return super(AskQuestionView, self).form_valid(form)
+
+class TagListView(ListView):
+    model = Tag
