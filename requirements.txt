@@ -2,8 +2,11 @@ Django==1.6.5
 South==1.0
 dj-database-url==0.3.0
 dj-static==0.0.6
+django-follow==0.6.1
 django-haystack==2.1.0
+django-secretballot==0.2.3
 django-taggit==0.12
+django-taggit-autosuggest==0.2.4
 django-taggit-templatetags==0.2.5
 django-templatetag-sugar==1.0
 django-toolbelt==0.0.1
