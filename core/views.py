@@ -15,8 +15,10 @@ from .serializers import QuestionSerializer, UserSerializer
 
 from taggit.models import Tag
 
+
 class QuestionView(View):
     model = Question
+
     def get(self, request, questionid):
         try:
             question = Question.objects.get(pk=questionid)
@@ -27,8 +29,10 @@ class QuestionView(View):
 
         return render(request, 'core/question.html', {'question': question})
 
+
 class UserView(View):
     model = User
+
     def get(self, request, username):
         try:
             user = User.objects.get(name=username)

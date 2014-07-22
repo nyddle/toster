@@ -125,6 +125,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "social_auth.context_processors.social_auth_by_type_backends"
 )
 
+AUTH_USER_MODEL = 'core.User'
+
 # social auth
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
