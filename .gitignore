@@ -54,3 +54,4 @@ docs/_build/
 
 # Pycharm
 .idea
+local_settings.py

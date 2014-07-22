@@ -32,3 +32,8 @@ url schema:
 - specific user activity
 
 
+# Configuration documentation
+### Social auth
+Docs: http://django-social-auth.readthedocs.org/en/latest/configuration.html     
+
+

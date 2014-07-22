@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -23,11 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +39,7 @@ INSTALLED_APPS = (
     'haystack',
     'toster',
     'core',
+    'social_auth'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,9 +59,6 @@ WSGI_APPLICATION = 'toster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-
-
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/toster') }
 
 # Internationalization
@@ -89,8 +84,6 @@ FIXTURE_DIRS = (
    '../fixtures/',
 )
 
-
-
 #    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10
@@ -103,10 +96,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+# STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -125,3 +115,62 @@ SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
 }
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "social_auth.context_processors.social_auth_by_type_backends"
+)
+
+# social auth
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    # 'social_auth.backends.facebook.FacebookBackend',
+    # 'social_auth.backends.google.GoogleOAuthBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.google.GoogleBackend',
+    # 'social_auth.backends.yahoo.YahooBackend',
+    # 'social_auth.backends.browserid.BrowserIDBackend',
+    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    # 'social_auth.backends.contrib.disqus.DisqusBackend',
+    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    # 'social_auth.backends.contrib.orkut.OrkutBackend',
+    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+    # 'social_auth.backends.contrib.vk.VKOAuth2Backend',
+    # 'social_auth.backends.contrib.live.LiveBackend',
+    # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
+    # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
+    # 'social_auth.backends.contrib.readability.ReadabilityBackend',
+    # 'social_auth.backends.contrib.fedora.FedoraBackend',
+    # 'social_auth.backends.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# have no idea what is it
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+SOCIAL_AUTH_UID_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
+SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
+
+TWITTER_CONSUMER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
+TWITTER_CONSUMER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
+
+SOCIAL_AUTH_TWITTER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
+SOCIAL_AUTH_TWITTER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
+
+SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', )
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/members/'
+LOGIN_ERROR_URL = '/login-error/'
+
+try:
+    from .local_settings import *
+except:
+    pass
