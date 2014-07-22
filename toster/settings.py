@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
+    'bookmarks',
     'south',
     'secretballot',
     'rest_framework',
@@ -116,6 +117,7 @@ SOUTH_MIGRATION_MODULES = {
 }
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",

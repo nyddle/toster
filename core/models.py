@@ -1,7 +1,11 @@
 from django.db import models
 from taggit.managers import TaggableManager
 
+# this one is for likes
 import secretballot
+# and this onу for bookmarks
+from bookmarks.handlers import library
+
 
 class User(models.Model):
     name = models.CharField(max_length=200)
@@ -22,4 +26,7 @@ class Question(models.Model):
     tags = TaggableManager()
 
 secretballot.enable_voting_on(Question)
+library.register(Question)
+library.register(User)
+
 
