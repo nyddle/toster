@@ -1,6 +1,8 @@
 from django.db import models
 from taggit.managers import TaggableManager
 
+import secretballot
+
 class User(models.Model):
     name = models.CharField(max_length=200)
     reg_date = models.DateTimeField('date registered', auto_now_add=True)
@@ -18,4 +20,5 @@ class Question(models.Model):
     author = models.ForeignKey(User, default=1)
     tags = TaggableManager()
 
+secretballot.enable_voting_on(Question)
 
