@@ -1,6 +1,6 @@
 {% if form %}
     {% if user.is_authenticated %}
-        <form action="{% url bookmarks_bookmark %}" method="post" accept-charset="UTF-8" class="bookmarks_form">
+        <form action="{% url 'bookmarks_bookmark' %}" method="post" accept-charset="UTF-8" class="bookmarks_form">
             {% csrf_token %}
             {{ form }}
             {% with form.bookmark_exists as exists %}
