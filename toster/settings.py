@@ -37,8 +37,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'haystack',
     'toster',
-    'core',
-    'social_auth'
+    'core'
 )
 
 MIDDLEWARE_CLASSES = (
