@@ -34,7 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'debug_toolbar',
     'taggit',
-    'bookmarks',
+    #'bookmarks',
     'south',
     'secretballot',
     'rest_framework',
@@ -128,7 +128,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "social_auth.context_processors.social_auth_by_type_backends"
 )
 
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'core.MyUser'
 
 # social auth
 AUTHENTICATION_BACKENDS = (

@@ -1,6 +1,8 @@
+from django.conf import settings
+
 from django.db import models
 from taggit.managers import TaggableManager
-from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoMyUserManager, PermissionsMixin
 
 # this one is for likes
 import secretballot
@@ -8,7 +10,7 @@ import secretballot
 from bookmarks.handlers import library
 
 
-class UserManager(DjangoUserManager):
+class MyUserManager(DjangoMyUserManager):
     def _create_user(self, name, email, password,
                      is_staff, is_superuser, **extra_fields):
         if not name:
@@ -30,7 +32,7 @@ class UserManager(DjangoUserManager):
                                  **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class MyUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=200, unique=True)
     email = models.EmailField(blank=True, null=True)
     reg_date = models.DateTimeField('date registered', auto_now_add=True)
@@ -39,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UserManager()
+    objects = MyUserManager()
 
     USERNAME_FIELD = 'name'
     REQUIRED_FIELDS = ['email']
@@ -51,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.name
 
 
+
 class Question(models.Model):
     question = models.CharField(max_length=200)
     details = models.CharField(max_length=500)
@@ -59,11 +62,13 @@ class Question(models.Model):
     answered = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
     section = models.CharField(max_length=200)
-    author = models.ForeignKey(User, default=1)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
     tags = TaggableManager()
+
 
 secretballot.enable_voting_on(Question)
 library.register(Question)
-library.register(User)
+library.register(MyUser)
+
 
 

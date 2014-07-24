@@ -2,12 +2,12 @@ from django.contrib.auth.models import User, Group
 
 from rest_framework import serializers
 
-from .models import Question, User
+from .models import Question, MyUser
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class MyUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
+        model = MyUser
         fields = ('name',)
         lookup_field = 'author'
         view_name = 'user_detail'

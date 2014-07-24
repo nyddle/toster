@@ -1,6 +1,9 @@
 from haystack import indexes
 from django.utils import timezone
-from .models import Question, User
+from .models import Question, MyUser
+
+from django.contrib.auth import get_user_model as user_model
+MyUser = user_model()
 
 class QuestionIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
@@ -15,12 +18,12 @@ class QuestionIndex(indexes.SearchIndex, indexes.Indexable):
         return self.get_model().objects.filter(pub_date__lte=timezone.now())
 
 
-class UserIndex(indexes.SearchIndex, indexes.Indexable):
+class MyUserIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     name = indexes.CharField(model_attr='name')
 
     def get_model(self):
-        return User
+        return MyUser
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""

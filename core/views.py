@@ -10,11 +10,12 @@ from django.views.generic.edit import FormView, ProcessFormView, CreateView
 from rest_framework import viewsets
 
 from .forms import AskQuestionForm
-from .models import Question, User
-from .serializers import QuestionSerializer, UserSerializer
+from .models import Question
+from .serializers import QuestionSerializer, MyUserSerializer
 
 from taggit.models import Tag
-
+from django.contrib.auth import get_user_model as user_model
+MyUser = user_model()
 
 class QuestionView(View):
     model = Question
@@ -30,13 +31,13 @@ class QuestionView(View):
         return render(request, 'core/question.html', {'question': question})
 
 
-class UserView(View):
-    model = User
+class MyUserView(View):
+    model = MyUser
 
     def get(self, request, username):
         try:
-            user = User.objects.get(name=username)
-        except User.DoesNotExist:
+            user = MyUser.objects.get(name=username)
+        except MyUser.DoesNotExist:
             raise Http404
         return render(request, 'core/user.html', {'user': user})
 
@@ -62,15 +63,15 @@ class PopularQuestionListView(ListView):
     queryset = Question.objects.order_by('-rating')
 
 
-class UserListView(ListView):
-    model = User
+class MyUserListView(ListView):
+    model = MyUser
 
 
-class UserQuestionListView(ListView):
+class MyUserQuestionListView(ListView):
     model = Question
 
     def get_queryset(self):
-        self.author = get_object_or_404(User, name=self.kwargs['username'])
+        self.author = get_object_or_404(MyUser, name=self.kwargs['username'])
         return Question.objects.filter(author=self.author)
 
 
@@ -82,12 +83,12 @@ class QuestionViewSet(viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class MyUserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    queryset = MyUser.objects.all()
+    serializer_class = MyUserSerializer
 
 
 class HomeView(View):

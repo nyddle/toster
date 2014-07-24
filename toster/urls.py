@@ -7,8 +7,12 @@ admin.autodiscover()
 from rest_framework import routers
 from core import views
 
+from django.contrib.auth import get_user_model as user_model
+User = user_model()
+
+
 router = routers.DefaultRouter()
-router.register(r'/api/users', views.UserViewSet)
+router.register(r'/api/users', views.MyUserViewSet)
 router.register(r'/api/questions', views.QuestionViewSet)
 
 urlpatterns = patterns('',

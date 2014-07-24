@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
 
 from .views import QuestionView, QuestionListView, PopularQuestionListView, \
-    UserListView, AskQuestionView, UserView, UserQuestionListView, TagListView, Members
+    MyUserListView, AskQuestionView, MyUserView, MyUserQuestionListView, TagListView, Members
 
+from django.contrib.auth import get_user_model as user_model
+MyUser = user_model()
 
 urlpatterns = patterns('',
     url(r'^$', QuestionListView.as_view(), name='home'),
@@ -12,10 +14,10 @@ urlpatterns = patterns('',
     url(r'^questions/latest/$', QuestionListView.as_view(), name='questions_latest'),
     url(r'^questions/popular/$', PopularQuestionListView.as_view(), name='questions_popular'),
     url(r'^questions/$', QuestionListView.as_view(), name='questions'),
-    url(r'^user/(?P<username>.+)/questions/$', UserQuestionListView.as_view(), name='user_questions'),
+    url(r'^user/(?P<username>.+)/questions/$', MyUserQuestionListView.as_view(), name='user_questions'),
 
-    url(r'^user/(?P<username>.+)/$', UserView.as_view(), name='user'),
-    url(r'^users/$', UserListView.as_view(), name='users'),
+    url(r'^user/(?P<username>.+)/$', MyUserView.as_view(), name='user'),
+    url(r'^users/$', MyUserListView.as_view(), name='users'),
 
     url(r'^home/$', AskQuestionView.as_view(), name='home'),
     url(r'^search2/$', QuestionListView.as_view(), name='search_results'),
