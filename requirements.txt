@@ -19,6 +19,5 @@ psycopg2==2.5.3
 pyelasticsearch==0.6.1
 pyflakes==0.8.1
 requests==2.3.0
-simplejson==3.5.3
 six==1.7.3
 static3==0.5.1

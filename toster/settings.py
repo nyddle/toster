@@ -40,8 +40,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'haystack',
     'toster',
-    'core',
-    'social_auth'
+    'core'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,6 +127,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     "social_auth.context_processors.social_auth_by_type_backends"
 )
+
+AUTH_USER_MODEL = 'core.User'
 
 # social auth
 AUTHENTICATION_BACKENDS = (
