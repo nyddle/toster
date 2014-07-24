@@ -20,6 +20,7 @@ urlpatterns = patterns('',
 
     # social auth
     url(r'', include('social_auth.urls')),
+    url(r'^bookmarks/', include('bookmarks.urls')),
 
 )
 

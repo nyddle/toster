@@ -2,6 +2,11 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoUserManager, PermissionsMixin
 
+# this one is for likes
+import secretballot
+# and this onу for bookmarks
+from bookmarks.handlers import library
+
 
 class UserManager(DjangoUserManager):
     def _create_user(self, name, email, password,
@@ -56,5 +61,9 @@ class Question(models.Model):
     section = models.CharField(max_length=200)
     author = models.ForeignKey(User, default=1)
     tags = TaggableManager()
+
+secretballot.enable_voting_on(Question)
+library.register(Question)
+library.register(User)
 
 
