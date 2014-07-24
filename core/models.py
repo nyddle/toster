@@ -1,6 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
-from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoUserManager
+from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoUserManager, PermissionsMixin
 
 
 class UserManager(DjangoUserManager):
@@ -25,17 +25,25 @@ class UserManager(DjangoUserManager):
                                  **extra_fields)
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=200, unique=True)
     email = models.EmailField(blank=True, null=True)
     reg_date = models.DateTimeField('date registered', auto_now_add=True)
     rating = models.IntegerField(default=0)
     about = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
-    object = UserManager()
+    objects = UserManager()
 
     USERNAME_FIELD = 'name'
     REQUIRED_FIELDS = ['email']
+
+    def get_short_name(self):
+        return self.name
+
+    def get_full_name(self):
+        return self.name
 
 
 class Question(models.Model):
