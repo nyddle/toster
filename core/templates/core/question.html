@@ -3,8 +3,10 @@
 {% block content %}
     <h2>{{ question.question }}</h2>
             <p>{{ question.details }}
+
     {% load bookmarks_tags %}
     {% bookmark_form for question %}
+                
     </ul>
 {% endblock %}
 
