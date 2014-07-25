@@ -8,5 +8,5 @@ from core.models import Question
 class AskQuestionForm(ModelForm):
     class Meta:
         model = Question
-        fields = [ 'question', 'details', 'tags', ]
+        fields = [ 'question', 'details', 'tags', 'author', ]
 

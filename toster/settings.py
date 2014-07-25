@@ -24,6 +24,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+AUTH_USER_MODEL = 'core.MyUser'
+
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -34,13 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'debug_toolbar',
     'taggit',
-    #'bookmarks',
     'south',
     'secretballot',
     'rest_framework',
     'haystack',
     'toster',
-    'core'
+    'core',
+    'bookmarks'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,7 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "social_auth.context_processors.social_auth_by_type_backends"
 )
 
-AUTH_USER_MODEL = 'core.MyUser'
+
 
 # social auth
 AUTHENTICATION_BACKENDS = (

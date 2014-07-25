@@ -10,12 +10,12 @@ from django.views.generic.edit import FormView, ProcessFormView, CreateView
 from rest_framework import viewsets
 
 from .forms import AskQuestionForm
-from .models import Question
+from .models import Question, MyUser
 from .serializers import QuestionSerializer, MyUserSerializer
 
 from taggit.models import Tag
 from django.contrib.auth import get_user_model as user_model
-MyUser = user_model()
+#MyUser = user_model()
 
 class QuestionView(View):
     model = Question
