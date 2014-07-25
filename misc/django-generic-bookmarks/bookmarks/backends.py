@@ -4,7 +4,9 @@ except ImportError:
     from django.utils.importlib import import_module
 from django.db import transaction
 from django.core.exceptions import ImproperlyConfigured
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from django.conf import settings
+User = settings.AUTH_USER_MODEL
 from django.contrib.contenttypes.models import ContentType
     
 from bookmarks import settings, models, utils, exceptions
