@@ -4,10 +4,11 @@
     <h2>Bookmarks</h2>
     <br><br>
     <ul>
-        {% for bookmark in object_list %}
+        {% for bookmark in bookmarks %}
             <li>
                 {{ bookmark.user }}
                 {{ bookmark.content_type }}
+                contents: {{ bookmark.content_object }}
             </li>
         {% endfor %}
     </ul>

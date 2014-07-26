@@ -121,29 +121,9 @@ class Members(View):
         print('session', request.session.keys())
         return render(request, 'core/member.html')
 
-"""
-class BookmarksView(ListView):
-    model = Bookmark
-    template_name = 'core/bookmark_list.html'
 
-    def get_queryset(self):
-        queryset = library.backend.filter(user=self.request.user)
-        return queryset
+class BookmarksView(View):
 
-class BookmarksView(ListView):
-    model = Bookmark
-    template_name = 'core/bookmark_list.html'
-
-    def get_queryset(self):
-        queryset = Bookmark.objects.filter(user=self.request.user)
-        return queryset
-"""
-
-
-class BookmarksView(ListView):
-    model = Bookmark
-    template_name = 'core/bookmark_list.html'
-
-    def get_queryset(self):
-        queryset = Bookmark.objects.filter()
-        return queryset
+    def get(self, request):
+        bookmarks = Bookmark.objects.filter_with_contents(user=self.request.user)
+        return render(request, 'core/bookmark_list.html', { 'bookmarks' : bookmarks })

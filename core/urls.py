@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^tags/$', TagListView.as_view(template_name='core/tag_list.html'), name='tags'),
     url(r'^tag/(?P<tag>.+)/$', QuestionListView.as_view(template_name='core/question_list.html'), name='tag'),
 
-    url(r'^bookmarks2/', BookmarksView.as_view(template_name='core/bookmark_list.html'), name='bookmarks_list'),
+    url(r'^bookmarks2/', BookmarksView.as_view(), name='bookmarks_list'),
 
     # temp, should be deleted
     url(r'^members/$', Members.as_view(), name='members'),
