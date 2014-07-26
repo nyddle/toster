@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
 from .views import QuestionView, QuestionListView, PopularQuestionListView, \
-    MyUserListView, AskQuestionView, MyUserView, MyUserQuestionListView, TagListView, Members
+    MyUserListView, AskQuestionView, MyUserView, MyUserQuestionListView, TagListView, BookmarksView, Members
 
 from django.contrib.auth import get_user_model as user_model
 MyUser = user_model()
@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^tags/$', TagListView.as_view(template_name='core/tag_list.html'), name='tags'),
     url(r'^tag/(?P<tag>.+)/$', QuestionListView.as_view(template_name='core/question_list.html'), name='tag'),
 
+    url(r'^bookmarks2/', BookmarksView.as_view(template_name='core/bookmark_list.html'), name='bookmarks_list'),
 
     # temp, should be deleted
     url(r'^members/$', Members.as_view(), name='members'),

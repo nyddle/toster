@@ -14,6 +14,10 @@ from .models import Question, MyUser
 from .serializers import QuestionSerializer, MyUserSerializer
 
 from taggit.models import Tag
+
+from bookmarks.handlers import library
+from bookmarks.models import Bookmark
+
 from django.contrib.auth import get_user_model as user_model
 #MyUser = user_model()
 
@@ -110,8 +114,36 @@ class TagListView(ListView):
     model = Tag
 
 
+#TODO: MembersView?
 class Members(View):
     def get(self, request):
         print('user', request.user)
         print('session', request.session.keys())
         return render(request, 'core/member.html')
+
+"""
+class BookmarksView(ListView):
+    model = Bookmark
+    template_name = 'core/bookmark_list.html'
+
+    def get_queryset(self):
+        queryset = library.backend.filter(user=self.request.user)
+        return queryset
+
+class BookmarksView(ListView):
+    model = Bookmark
+    template_name = 'core/bookmark_list.html'
+
+    def get_queryset(self):
+        queryset = Bookmark.objects.filter(user=self.request.user)
+        return queryset
+"""
+
+
+class BookmarksView(ListView):
+    model = Bookmark
+    template_name = 'core/bookmark_list.html'
+
+    def get_queryset(self):
+        queryset = Bookmark.objects.filter()
+        return queryset
