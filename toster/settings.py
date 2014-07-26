@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'taggit',
     'south',
     'secretballot',
+    'likes',
     'rest_framework',
     'haystack',
     'toster',
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 )
 
 ROOT_URLCONF = 'toster.urls'
