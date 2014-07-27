@@ -1,0 +1,21 @@
+Exception Type: ImportError
+Exception Value:    
+No module named 'django.conf.urls.defaults'
+Exception Location: /Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/django_likes-0.1-py3.4.egg/likes/urls.py in <module>, line 1
+Python Executable:  /Library/Frameworks/Python.framework/Versions/3.4/bin/python3
+
+
+django.conf.urls.defaults has been removed in Django 1.6. If the problem was in your own code, you would fix it by changing the import to
+
+from django.conf.urls import patterns, url, include
+
+
+====
+
+
+
+Exception Type: NoReverseMatch
+Exception Value:    
+'url' requires a non-empty first argument. The syntax changed in Django 1.5, see the docs.
+Exception Location: /Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/django/template/defaulttags.py in render, line 424
+Python Executable:  
