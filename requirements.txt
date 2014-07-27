@@ -5,9 +5,9 @@ dj-static==0.0.6
 django-cache-panel==0.1
 django-debug-toolbar==1.2.1
 django-follow==0.6.1
-django-generic-bookmarks==0.3
+git+git@github.com:nyddle/django-generic-bookmarks.git
 django-haystack==2.1.0
-django-likes==0.1
+git+git@github.com:nyddle/django-likes.git
 django-ratings==0.3.7
 django-secretballot==0.2.3
 django-social-auth==0.8.1
