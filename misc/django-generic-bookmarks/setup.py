@@ -18,7 +18,7 @@ for dirpath, dirnames, filenames in os.walk('bookmarks'):
 version = "%s.%s" % __import__('bookmarks').VERSION[:2]
 
 def read(filename):
-    return open(os.path.join(os.path.dirname(__file__), filename)).read()
+    return file(os.path.join(os.path.dirname(__file__), filename)).read()
 
 setup(name='django-generic-bookmarks',
     version=version,
