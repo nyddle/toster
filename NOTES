@@ -19,3 +19,8 @@ Exception Value:
 'url' requires a non-empty first argument. The syntax changed in Django 1.5, see the docs.
 Exception Location: /Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/django/template/defaulttags.py in render, line 424
 Python Executable:  
+
+
+
+
+python3.2 - u''
