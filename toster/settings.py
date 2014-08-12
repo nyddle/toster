@@ -129,50 +129,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "social_auth.context_processors.social_auth_by_type_backends"
 )
 
-
-
-# social auth
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    # 'social_auth.backends.facebook.FacebookBackend',
-    # 'social_auth.backends.google.GoogleOAuthBackend',
-    # 'social_auth.backends.google.GoogleOAuth2Backend',
-    # 'social_auth.backends.google.GoogleBackend',
-    # 'social_auth.backends.yahoo.YahooBackend',
-    # 'social_auth.backends.browserid.BrowserIDBackend',
-    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
-    # 'social_auth.backends.contrib.disqus.DisqusBackend',
-    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
-    # 'social_auth.backends.contrib.orkut.OrkutBackend',
-    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
-    # 'social_auth.backends.contrib.github.GithubBackend',
-    # 'social_auth.backends.contrib.vk.VKOAuth2Backend',
-    # 'social_auth.backends.contrib.live.LiveBackend',
-    # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
-    # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
-    # 'social_auth.backends.contrib.readability.ReadabilityBackend',
-    # 'social_auth.backends.contrib.fedora.FedoraBackend',
-    # 'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-# have no idea what is it
-SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
-SOCIAL_AUTH_UID_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
-
 TWITTER_CONSUMER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
 TWITTER_CONSUMER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
-
-SOCIAL_AUTH_TWITTER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
-SOCIAL_AUTH_TWITTER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
-
-SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', )
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/members/'

@@ -44,11 +44,6 @@
           <li class="active"><a href="{% url 'ask_question' %}">Ask question</a></li>
           <li class="active"><a href="{% url 'bookmarks_list' %}">Bookmarks</a></li>
           <li class="active"><a href="{% url 'about' %}">About</a></li>
-          {% if not request.user.is_authenticated %}
-          <li class="active">
-              <a href="{% url 'socialauth_begin' 'twitter' %}">Login with Twitter</a>
-          </li>
-          {% endif %}
           <li class="active">
             <form action="{% url 'search_results' %}" method="GET">
                 <input type="text" name="q" />
@@ -60,7 +55,7 @@
     </div>
 
     <div class="container">
-        
+
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
@@ -72,7 +67,7 @@
       {% endblock content %}
 
     </div> <!-- /container -->
-    
+
     {% block modal %}{% endblock modal %}
 
     <!-- Le javascript
@@ -92,4 +87,4 @@
     {% endblock javascript %}
   </body>
 </html>
- 
+

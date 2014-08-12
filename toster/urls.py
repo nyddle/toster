@@ -23,8 +23,8 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # social auth
-    url(r'', include('social_auth.urls')),
-    
+    # url(r'', include('social_auth.urls')),
+
     url(r'^bookmarks/', include('bookmarks.urls')),
     (r'^likes/', include('likes.urls')),
 
