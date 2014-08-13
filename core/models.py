@@ -1,3 +1,6 @@
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.template.defaultfilters import slugify
 from django.conf import settings
 
 from django.db import models
@@ -58,6 +61,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
 
 class Question(models.Model):
     question = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, default="")
     details = models.CharField(max_length=500)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     views = models.IntegerField(default=0)
@@ -67,6 +71,9 @@ class Question(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     tags = TaggableManager()
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.question)
+        super(Question, self).save(*args, **kwargs)
 
 secretballot.enable_voting_on(Question)
 library.register(Question)

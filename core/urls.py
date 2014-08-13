@@ -9,7 +9,7 @@ MyUser = user_model()
 urlpatterns = patterns('',
     url(r'^$', QuestionListView.as_view(), name='home'),
     url(r'^question/ask/$', AskQuestionView.as_view(), name='ask_question'),
-    url(r'^question/(?P<questionid>.+)/$', QuestionView.as_view(), name='question'),
+    url(r'^question/(?P<questionid>.+)/(?P<slug>[-\w\d]+)$', QuestionView.as_view(), name='question'),
 
     url(r'^questions/latest/$', QuestionListView.as_view(), name='questions_latest'),
     url(r'^questions/popular/$', PopularQuestionListView.as_view(), name='questions_popular'),

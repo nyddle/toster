@@ -24,7 +24,7 @@ from django.contrib.auth import get_user_model as user_model
 class QuestionView(View):
     model = Question
 
-    def get(self, request, questionid):
+    def get(self, request, questionid, slug):
         try:
             question = Question.objects.get(pk=questionid)
         except Question.DoesNotExist:
