@@ -10,7 +10,8 @@ sudo apt-get install -y libpq-dev postgresql postgresql-contrib
 # install java
 sudo apt-get install openjdk-7-jre-headless -y
 
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.deb
+#wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.deb
+wget https://github.com/nyddle/toster/blob/adavydov_vagrant/misc/elasticsearch-1.3.1.deb
 dpkg -i elasticsearch-1.3.1.deb
 
 
@@ -25,6 +26,7 @@ pip install virtualenv
 mkdir  envs
 virtualenv envs/toster --distribute --python python3.4
 cd toster
-sudo pip install -r requirements.txt
+source ../envs/toster/bin/activate
+pip install -r requirements.txt
 
 
