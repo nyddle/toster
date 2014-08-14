@@ -50,12 +50,11 @@ class Migration(SchemaMigration):
             'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'rating': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'reg_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'blank': 'True', 'symmetrical': 'False', 'related_name': "'user_set'"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'})
+            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'blank': 'True', 'symmetrical': 'False', 'related_name': "'user_set'"})
         },
         'core.question': {
             'Meta': {'object_name': 'Question'},

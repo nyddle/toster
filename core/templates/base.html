@@ -50,6 +50,14 @@
                 <button type="submit">search</button>
             </form>
           </li>
+          {% if user.is_authenticated %}
+
+          {% else %}
+          <li class="active">Login with </li>
+          <li class="active"><a href="/accounts/login/google">Goggle</a>, </li>
+          <li class="active"><a href="/accounts/login/facebook">Facebook</a>, or </li>
+          <li class="active"><a href="/accounts/login/twitter">Twitter</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>

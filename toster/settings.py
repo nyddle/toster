@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'haystack',
     'toster',
     'core',
-    'bookmarks'
+    'bookmarks',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -129,14 +130,33 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
 )
+# must be hidden on deploy
+SOCIAL_AUTH_TWITTER_KEY = 'Xj6aPTqdpTA4Q3Ff83qs6WrzW'
+SOCIAL_AUTH_TWITTER_SECRET = 'i5mulzSZHuESLlvJMu7rxvWrW9JgUtHkgfuga4O5dh2Hv8ThgS'
 
-TWITTER_CONSUMER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
-TWITTER_CONSUMER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
+SOCIAL_AUTH_FACEBOOK_KEY = '562593127184100'
+SOCIAL_AUTH_FACEBOOK_SECRET = '6dcc7811568673cfc3cb508f4486e7ad'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'en_US'}
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '953708137662-4pcmcm55h2ce7j6igoh1gett2ifhib94.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mTdeDUSCVJOZYeTZvE20RHZp'
+SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/members/'

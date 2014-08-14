@@ -20,7 +20,7 @@ class QuestionIndex(indexes.SearchIndex, indexes.Indexable):
 
 class MyUserIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    name = indexes.CharField(model_attr='name')
+    username = indexes.CharField(model_attr='username')
 
     def get_model(self):
         return MyUser
