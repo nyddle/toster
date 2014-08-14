@@ -1,1 +1,0 @@
-from social.backends.livejournal import LiveJournalOpenId as LiveJournalBackend
