@@ -23,9 +23,8 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # social auth
-    url(r'^accounts/',
-        include('social.apps.django_app.urls', namespace='social')
-        ),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 
     url(r'^bookmarks/', include('bookmarks.urls')),
     (r'^likes/', include('likes.urls')),
