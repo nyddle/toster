@@ -53,10 +53,11 @@
         </ul>
         <ul class="nav navbar-nav">
           {% if user.is_authenticated %}
+          <li class="active">Welcome, {{ user.username }}</li>
           <li class="active"><a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
           {% else %}
           <li class="active">Login with </li>
-          <li class="active"><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Goggle</a></li>
+          <li class="active"><a href="{% url 'social:begin' 'google' %}?next={{ request.path }}">Goggle</a></li>
           <li class="active"><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a></li>
           <li class="active"><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Twitter</a></li>
           {% endif %}
