@@ -10,8 +10,8 @@ sudo apt-get install -y libpq-dev postgresql postgresql-contrib
 # install java
 sudo apt-get install openjdk-7-jre-headless -y
 
-#wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.1.deb
-wget https://github.com/nyddle/toster/blob/adavydov_vagrant/misc/elasticsearch-1.3.1.deb
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.2.deb
+#wget https://github.com/nyddle/toster/blob/adavydov_vagrant/misc/elasticsearch-1.3.1.deb
 dpkg -i elasticsearch-1.3.1.deb
 
 
