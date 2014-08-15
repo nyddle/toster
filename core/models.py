@@ -56,7 +56,6 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         return self.username
 
 
-
 class Question(models.Model):
     question = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, default="")

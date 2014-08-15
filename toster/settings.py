@@ -142,6 +142,20 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.FacebookOAuth2',
 )
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'core.utils.get_username',
+)
+
 # must be hidden on deploy
 SOCIAL_AUTH_TWITTER_KEY = 'Xj6aPTqdpTA4Q3Ff83qs6WrzW'
 SOCIAL_AUTH_TWITTER_SECRET = 'i5mulzSZHuESLlvJMu7rxvWrW9JgUtHkgfuga4O5dh2Hv8ThgS'
