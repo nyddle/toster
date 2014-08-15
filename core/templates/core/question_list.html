@@ -10,7 +10,7 @@
             <li>
              [ {{ question.rating }} {% likes question %} &#8593; </a> ]
              {{ question.question }} - <a href="/question/{{ question.id }}/{{ question.slug }}">more...</a>
-             - by <a href="/user/{{ question.author.name }}">{{ question.author.name }}</a>
+             - by <a href="/user/{{ question.author.username }}">{{ question.author.username }}</a>
             </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date | date }})</tt>
             tags: {% for tag in question.tags.all %} {{ tag }} {% endfor %}
         {% endfor %}
