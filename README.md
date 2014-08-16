@@ -1,3 +1,5 @@
+# Toster [![Build Status](https://travis-ci.org/nyddle/toster.svg?branch=master)](https://travis-ci.org/nyddle/toster)
+
 toster
 ======
 
