@@ -4,6 +4,8 @@ python:
 # command to install dependencies
 install: "pip install -r requirements.txt --use-mirrors"
 # command to run tests
-script: python manage.py test
 before_script:
   - psql -c 'create database toster;' -U postgres
+services:
+- elasticsearch
+script: python manage.py test
