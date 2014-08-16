@@ -1,7 +1,0 @@
-To install django-generic-bookmarks, run the following command 
-inside this directory:
-
-    python setup.py install
-
-Or if you'd prefer you can simply place the included ``bookmarks``
-package on your Python path.
