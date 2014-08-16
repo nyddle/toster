@@ -7,5 +7,5 @@ install: "pip install -r requirements.txt --use-mirrors"
 before_script:
   - psql -c 'create database toster;' -U postgres
 services:
-- elasticsearch
+  - elasticsearch
 script: python manage.py test
