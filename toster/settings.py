@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'haystack',
     'toster',
     'core',
-    'bookmarks'
+    'bookmarks',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,7 +65,7 @@ WSGI_APPLICATION = 'toster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 # Parse database configuration from $DATABASE_URL
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost/toster') }
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost/toster')}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -129,50 +130,47 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "social_auth.context_processors.social_auth_by_type_backends"
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
-
-
-# social auth
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    # 'social_auth.backends.facebook.FacebookBackend',
-    # 'social_auth.backends.google.GoogleOAuthBackend',
-    # 'social_auth.backends.google.GoogleOAuth2Backend',
-    # 'social_auth.backends.google.GoogleBackend',
-    # 'social_auth.backends.yahoo.YahooBackend',
-    # 'social_auth.backends.browserid.BrowserIDBackend',
-    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
-    # 'social_auth.backends.contrib.disqus.DisqusBackend',
-    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
-    # 'social_auth.backends.contrib.orkut.OrkutBackend',
-    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
-    # 'social_auth.backends.contrib.github.GithubBackend',
-    # 'social_auth.backends.contrib.vk.VKOAuth2Backend',
-    # 'social_auth.backends.contrib.live.LiveBackend',
-    # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
-    # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
-    # 'social_auth.backends.contrib.readability.ReadabilityBackend',
-    # 'social_auth.backends.contrib.fedora.FedoraBackend',
-    # 'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
 )
 
-# have no idea what is it
-SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
-SOCIAL_AUTH_UID_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
-SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'core.utils.get_username',
+)
 
-TWITTER_CONSUMER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
-TWITTER_CONSUMER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
+# must be hidden on deploy
+SOCIAL_AUTH_TWITTER_KEY = 'Xj6aPTqdpTA4Q3Ff83qs6WrzW'
+SOCIAL_AUTH_TWITTER_SECRET = 'i5mulzSZHuESLlvJMu7rxvWrW9JgUtHkgfuga4O5dh2Hv8ThgS'
 
-SOCIAL_AUTH_TWITTER_KEY = 'RBvaJN9JXmSWQqwRnHa8DQigD'
-SOCIAL_AUTH_TWITTER_SECRET = 'sr6R4ib1r2wVhxPWFCn4zC2I9jvyLFCOxwKnS8gHEX91QldjjW'
+SOCIAL_AUTH_FACEBOOK_KEY = '562593127184100'
+SOCIAL_AUTH_FACEBOOK_SECRET = '6dcc7811568673cfc3cb508f4486e7ad'
 
-SOCIAL_AUTH_ENABLED_BACKENDS = ('twitter', )
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'en_US'}
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '953708137662-4pcmcm55h2ce7j6igoh1gett2ifhib94.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mTdeDUSCVJOZYeTZvE20RHZp'
+SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/members/'

@@ -8,7 +8,7 @@ from .models import Question, MyUser
 class MyUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = MyUser
-        fields = ('name',)
+        fields = ('username',)
         lookup_field = 'author'
         view_name = 'user_detail'
 

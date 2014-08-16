@@ -1,1 +1,0 @@
-from social.pipeline.social_auth import associate_by_email

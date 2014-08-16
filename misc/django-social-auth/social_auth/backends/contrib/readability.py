@@ -1,1 +1,0 @@
-from social.backends.readability import ReadabilityOAuth as ReadabilityBackend
