@@ -21,12 +21,13 @@ sudo service elasticsearch start
 sudo apt-get install -y git
 git clone https://github.com/nyddle/toster.git
 
+su - postgres psql -c 'create database toster;'
 
+#TODO: we are mot actually using virtual env right now 
 pip install virtualenv
 mkdir  envs
 virtualenv envs/toster --distribute --python python3.4
 cd toster
 source ../envs/toster/bin/activate
 pip install -r requirements.txt
-
 
