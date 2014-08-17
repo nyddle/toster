@@ -58,7 +58,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
 
 class Question(models.Model):
     question = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True, default="")
+    slug = models.SlugField(max_length=200, default="")
     details = models.CharField(max_length=500)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
     views = models.IntegerField(default=0)
