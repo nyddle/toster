@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Question.slug'
         db.add_column('core_question', 'slug',
-                      self.gf('django.db.models.fields.SlugField')(unique=True, max_length=200, default=''),
+                      self.gf('django.db.models.fields.SlugField')(max_length=200, default=''),
                       keep_default=False)
 
 
@@ -66,7 +66,7 @@ class Migration(SchemaMigration):
             'question': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'rating': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'section': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '200', 'default': "''"}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '200', 'default': "''"}),
             'views': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         }
     }
