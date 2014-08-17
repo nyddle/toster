@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoMy
 
 # this one is for likes
 import secretballot
-# and this onу for bookmarks
+# and this only for bookmarks
 from bookmarks.handlers import library
 
 
