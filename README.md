@@ -1,43 +1,8 @@
-# Toster [![Build Status](https://travis-ci.org/nyddle/toster.svg?branch=master)](https://travis-ci.org/nyddle/toster)
+# toster [![Build Status](https://travis-ci.org/nyddle/toster.svg?branch=master)](https://travis-ci.org/nyddle/toster)
 [![Documentation Status](https://readthedocs.org/projects/toster/badge/?version=latest)](https://readthedocs.org/projects/toster/?badge=latest)
 
 
-toster
-======
 
-toster
-
-
-
-url schema:
-
-/questions
-
-- list all questions in chronological order
-
-/feed 
-
-- last logged-in user related activity
-
-/tags
-
-- index of all existing tags
-
-/tags/<tag>
-
-- all content by a specific tag
-
-/users
-
-- list of all users
-
-/users/<user>
-
-- specific user activity
-
-
-# Configuration documentation
-### Social auth
-Docs: http://django-social-auth.readthedocs.org/en/latest/configuration.html     
+`Docs for this project <http://toster.readthedocs.org>`_
 
 
