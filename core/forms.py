@@ -10,3 +10,8 @@ class AskQuestionForm(ModelForm):
         model = Question
         fields = [ 'question', 'details', 'tags', 'author', ]
 
+
+class LockQuestionForm(ModelForm):
+    class Meta:
+        model = Question
+        fields = ['locked']

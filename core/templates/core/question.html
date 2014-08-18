@@ -4,11 +4,18 @@
     <h2>{{ question.question }}</h2>
             <p>{{ question.details }}
 
+<br>
+bookmarks
     {% load bookmarks_tags %}
     {% bookmark_form for question %}
                 
     </ul>
+
+<form action="{% url 'question' pk=question.id slug=question.slug %}" method="post">
+    {% csrf_token %}
+    {{ lock_form }}
+    <input type="submit" value="Save">
+</form>
+
 {% endblock %}
-
-
 

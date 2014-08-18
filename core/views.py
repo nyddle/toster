@@ -3,13 +3,14 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponseNotFound
 
-from django.views.generic import View
+from django.views.generic import View, DetailView, UpdateView
 from django.views.generic import ListView
 from django.views.generic.edit import FormView, ProcessFormView, CreateView
+from django.core.urlresolvers import reverse
 
 from rest_framework import viewsets
 
-from .forms import AskQuestionForm
+from .forms import AskQuestionForm, LockQuestionForm
 from .models import Question, MyUser
 from .serializers import QuestionSerializer, MyUserSerializer
 
@@ -21,18 +22,29 @@ from bookmarks.models import Bookmark
 from django.contrib.auth import get_user_model as user_model
 #MyUser = user_model()
 
-class QuestionView(View):
-    model = Question
 
-    def get(self, request, questionid, slug):
-        try:
-            question = Question.objects.get(pk=questionid)
-        except Question.DoesNotExist:
-            raise Http404
+class QuestionView(UpdateView):
+    model = Question
+    context_object_name = 'question'
+    template_name = 'core/question.html'
+    form_class = LockQuestionForm
+
+    def get_context_data(self, **kwargs):
+        question = self.get_object()
+        lock_form = LockQuestionForm(instance=question)
+        context = super(QuestionView, self).get_context_data(**kwargs)
+        context['lock_form'] = lock_form
+        return context
+
+    def get(self, request, *args, **kwargs):
+        question = self.get_object()
         question.views += 1
         question.save()
+        return super(QuestionView, self).get(request, *args, **kwargs)
 
-        return render(request, 'core/question.html', {'question': question})
+    def form_valid(self, form):
+        form.save()
+        return super(QuestionView, self).form_valid(form)
 
 
 class MyUserView(View):
