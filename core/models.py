@@ -11,6 +11,8 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoMy
 import secretballot
 # and this only for bookmarks
 from bookmarks.handlers import library
+# this is for activity stream
+from actstream import registry
 
 
 class MyUserManager(DjangoMyUserManager):
@@ -76,5 +78,7 @@ secretballot.enable_voting_on(Question)
 library.register(Question)
 library.register(MyUser)
 
-
+#TODO: this will change in 1.7: https://django-activity-stream.readthedocs.org/en/latest/configuration.html
+registry.register(MyUser)
+registry.register(Question)
 

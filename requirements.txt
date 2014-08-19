@@ -8,6 +8,7 @@ django-debug-toolbar==1.2.1
 django-follow==0.6.1
 django-generic-bookmarks==0.3
 django-haystack==2.1.0
+django-jsonfield==0.9.13
 django-likes==0.1
 django-ratings==0.3.7
 django-secretballot==0.2.3
