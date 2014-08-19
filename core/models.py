@@ -5,6 +5,7 @@ from django.conf import settings
 
 from django.db import models
 from taggit.managers import TaggableManager
+from taggit.models import Tag
 from django.contrib.auth.models import AbstractBaseUser, UserManager as DjangoMyUserManager, PermissionsMixin
 
 # this one is for likes
@@ -12,7 +13,7 @@ import secretballot
 # and this only for bookmarks
 from bookmarks.handlers import library
 # this is for activity stream
-from actstream import registry
+from actstream import registry, action
 
 
 class MyUserManager(DjangoMyUserManager):
@@ -73,6 +74,10 @@ class Question(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.question)
         super(Question, self).save(*args, **kwargs)
+        action.send(self.author, verb='asked a question')
+        for tag in self.tags.all():
+            action.send(tag, verb='new question')
+
 
 secretballot.enable_voting_on(Question)
 library.register(Question)
@@ -81,4 +86,5 @@ library.register(MyUser)
 #TODO: this will change in 1.7: https://django-activity-stream.readthedocs.org/en/latest/configuration.html
 registry.register(MyUser)
 registry.register(Question)
+registry.register(Tag)
 

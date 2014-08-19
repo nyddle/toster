@@ -19,7 +19,8 @@ from bookmarks.handlers import library
 from bookmarks.models import Bookmark
 
 from django.contrib.auth import get_user_model as user_model
-#MyUser = user_model()
+
+from actstream import action
 
 class QuestionView(View):
     model = Question
