@@ -129,7 +129,7 @@ SOUTH_MIGRATION_MODULES = {
 }
 
 ACTSTREAM_SETTINGS = {
-    #'MANAGER': 'core.managers.MyActionManager',
+    'MANAGER': 'core.managers.MyActionManager',
     'FETCH_RELATIONS': True,
     'USE_PREFETCH': True,
     'USE_JSONFIELD': True,

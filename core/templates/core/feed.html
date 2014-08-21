@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load activity_tags %}
-
+{% activity_stream 'mystream' user_instance 'commented' %}
 {% block content %}
 
 <h3>Activity stream</h3>

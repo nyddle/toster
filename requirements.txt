@@ -2,7 +2,7 @@ Django==1.6.5
 South==1.0
 dj-database-url==0.3.0
 dj-static==0.0.6
-django-activity-stream==0.5.0
+git+https://github.com/nyddle/django-activity-stream
 django-cache-panel==0.1
 django-debug-toolbar==1.2.1
 django-follow==0.6.1
