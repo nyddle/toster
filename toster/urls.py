@@ -32,4 +32,9 @@ urlpatterns = patterns('',
     url('^activity/', include('actstream.urls')),
 )
 
-
+from toster import settings
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += patterns('',
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    )
