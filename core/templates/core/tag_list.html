@@ -1,11 +1,21 @@
 {% extends "base.html" %}
+{% load activity_tags %}
 
 {% block content %}
     <h2>Tags</h2> ( <a href="{% url 'questions_popular' %}">popular</a> |  <a href="{% url 'questions_latest' %}">latest</a>  )
     <br><br>
     <ul>
         {% for tag in object_list %}
-            <li><a href="{% url 'tag' tag=tag %}">{{ tag }}</a></li>
+            <li>
+                <a href="{% url 'tag' tag=tag %}">{{ tag }}</a>
+                <a href="{% follow_all_url tag %}?next=/tags/">
+                    {% if request.user|is_following:tag %}
+                        stop following
+                    {% else %}
+                        follow
+                    {% endif %}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

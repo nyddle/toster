@@ -1,10 +1,20 @@
 {% extends "base.html" %}
+{% load activity_tags %}
 
 {% block content %}
     <h2>Users</h2>
     <ul>
         {% for user in object_list %}
-            <li>{{ user.username }} - <a href="/user/{{ user.username }}">profile...</a></li>
+            <li>
+                {{ user.username }} - <a href="/user/{{ user.username }}">profile...</a>
+                 <a href="{% follow_all_url user %}?next=/users/">
+                        {% if request.user|is_following:user %}
+                            stop following
+                        {% else %}
+                            follow
+                        {% endif %}
+                    </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

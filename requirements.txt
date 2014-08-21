@@ -2,12 +2,14 @@ Django==1.6.5
 South==1.0
 dj-database-url==0.3.0
 dj-static==0.0.6
+git+https://github.com/nyddle/django-activity-stream
 django-cache-panel==0.1
 django-debug-toolbar==1.2.1
 django-follow==0.6.1
-git+git://github.com/nyddle/django-generic-bookmarks.git
+django-generic-bookmarks==0.3
 django-haystack==2.1.0
-git+git://github.com/nyddle/django-likes.git
+django-jsonfield==0.9.13
+django-likes==0.1
 django-ratings==0.3.7
 django-secretballot==0.2.3
 django-taggit==0.12

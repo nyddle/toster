@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load activity_tags %}
 {% load likes_inclusion_tags %}
 
 {% block content %}
@@ -12,7 +13,15 @@
              <a href="/question/{{ question.id }}/{{ question.slug }}">{{ question.question }}</a>
              - by <a href="/user/{{ question.author.username }}">{{ question.author.username }}</a>
             </li> <tt>(views: {{ question.views }}, published: {{ question.pub_date | date }})</tt>
-            tags: {% for tag in question.tags.all %} {{ tag }} {% endfor %}
+            tags: {% for tag in question.tags.all %} {{ tag }} {% endfor %}<br>
+             <a href="{% follow_all_url question %}?next=/questions/">
+                    {% if request.user|is_following:question%}
+                        stop following
+                    {% else %}
+                        follow
+                    {% endif %}
+                </a>
+
         {% endfor %}
     </ul>
 {% endblock %}

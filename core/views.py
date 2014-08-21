@@ -19,7 +19,14 @@ from bookmarks.handlers import library
 from bookmarks.models import Bookmark
 
 from django.contrib.auth import get_user_model as user_model
-#MyUser = user_model()
+
+from actstream import action
+from actstream.models import model_stream, any_stream
+
+class FeedView(View):
+
+    def get(self, request):
+        return render(request, 'core/feed.html', { 'stream' : any_stream(request.user) })
 
 class QuestionView(View):
     model = Question

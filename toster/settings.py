@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'core',
     'bookmarks',
     'social.apps.django_app.default',
+    'actstream',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,6 +126,14 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
+}
+
+ACTSTREAM_SETTINGS = {
+    'MANAGER': 'core.managers.MyActionManager',
+    'FETCH_RELATIONS': True,
+    'USE_PREFETCH': True,
+    'USE_JSONFIELD': True,
+    'GFK_FETCH_DEPTH': 1,
 }
 
 TEMPLATE_CONTEXT_PROCESSORS = (

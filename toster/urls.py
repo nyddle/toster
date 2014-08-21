@@ -27,8 +27,9 @@ urlpatterns = patterns('',
     url('', include('django.contrib.auth.urls', namespace='auth')),
 
     url(r'^bookmarks/', include('bookmarks.urls')),
-    (r'^likes/', include('likes.urls')),
+    url(r'^likes/', include('likes.urls')),
 
+    url('^activity/', include('actstream.urls')),
 )
 
 
