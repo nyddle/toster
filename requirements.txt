@@ -36,3 +36,4 @@ sqlparse==0.1.11
 static3==0.5.1
 git+https://github.com/nyddle/python-akismet.git
 django-fluent-comments
+django-threadedcomments

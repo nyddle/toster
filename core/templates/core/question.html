@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load comments %}
 
 {% block content %}
     <h2>{{ question.question }}</h2>
@@ -8,6 +9,9 @@
     {% bookmark_form for question %}
                 
     </ul>
+
+{% render_comment_list for question %}
+
 {% endblock %}
 
 

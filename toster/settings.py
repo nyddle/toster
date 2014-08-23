@@ -12,6 +12,7 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -36,6 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    #'fluent_comments',
+    'crispy_forms',
+    'django.contrib.comments',
+    'threadedcomments',
     'debug_toolbar',
     'taggit',
     'south',
@@ -193,6 +199,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/members/'
 LOGIN_ERROR_URL = '/login-error/'
+
+COMMENTS_APP = 'toster'
 
 try:
     from .local_settings import *

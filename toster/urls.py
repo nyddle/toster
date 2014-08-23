@@ -28,7 +28,7 @@ urlpatterns = patterns('',
 
     url(r'^bookmarks/', include('bookmarks.urls')),
     url(r'^likes/', include('likes.urls')),
-
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url('^activity/', include('actstream.urls')),
 )
 
