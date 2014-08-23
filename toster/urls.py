@@ -28,6 +28,7 @@ urlpatterns = patterns('',
 
     url(r'^bookmarks/', include('bookmarks.urls')),
     url(r'^likes/', include('likes.urls')),
+    #TODO:add fluentcomments  http://stackoverflow.com/questions/21163709/how-to-setup-django-fluent-comments-on-django-1-6
     url(r'^comments/', include('django.contrib.comments.urls')),
     url('^activity/', include('actstream.urls')),
 )

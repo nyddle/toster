@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    #'fluent_comments',
+    'fluent_comments',
     'crispy_forms',
     'django.contrib.comments',
     'threadedcomments',
