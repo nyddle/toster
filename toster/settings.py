@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'bookmarks',
     'social.apps.django_app.default',
     'actstream',
+    'avatar',
 )
 
 MIDDLEWARE_CLASSES = (

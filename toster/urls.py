@@ -30,6 +30,8 @@ urlpatterns = patterns('',
     url(r'^likes/', include('likes.urls')),
 
     url('^activity/', include('actstream.urls')),
+
+    url(r'^avatar/', include('avatar.urls')),
 )
 
 
