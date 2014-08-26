@@ -7,10 +7,10 @@ django-avatar==2.0
 django-cache-panel==0.1
 django-debug-toolbar==1.2.1
 django-follow==0.6.1
-django-generic-bookmarks==0.3
+git+https://github.com/nyddle/django-generic-bookmarks
 django-haystack==2.1.0
 django-jsonfield==0.9.13
-django-likes==0.1
+git+https://github.com/nyddle/django-likes
 django-ratings==0.3.7
 django-secretballot==0.2.3
 django-taggit==0.12
