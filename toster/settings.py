@@ -94,6 +94,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = 'media/'
+MEDIA_URL = 'media/'
+
 FIXTURE_DIRS = (
    '../fixtures/',
 )
@@ -170,6 +173,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
     'core.utils.get_username',
+    'core.utils.save_user_avatar',
 )
 
 # must be hidden on deploy

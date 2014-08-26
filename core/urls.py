@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.conf import settings
 
 from .views import QuestionView, QuestionListView, PopularQuestionListView, \
     MyUserListView, AskQuestionView, MyUserView, MyUserQuestionListView, TagListView, BookmarksView, FeedView, Members
@@ -25,9 +26,12 @@ urlpatterns = patterns('',
     url(r'^tags/$', TagListView.as_view(template_name='core/tag_list.html'), name='tags'),
     url(r'^tag/(?P<tag>.+)/$', QuestionListView.as_view(template_name='core/question_list.html'), name='tag'),
 
-    url(r'^bookmarks2/', BookmarksView.as_view(), name='bookmarks_list'),
+    url(r'^bookmarks2/$', BookmarksView.as_view(), name='bookmarks_list'),
 
-    url(r'^feed/', FeedView.as_view(), name='feed'),
+    url(r'^feed/$', FeedView.as_view(), name='feed'),
+
+    url(r'media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
 
     # temp, should be deleted
     url(r'^members/$', Members.as_view(), name='members'),

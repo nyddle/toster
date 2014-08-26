@@ -55,7 +55,7 @@
         </ul>
         <ul class="nav navbar-nav">
           {% if user.is_authenticated %}
-          <li class="active">Welcome, {{ user.username }}</li>
+          <li class="active">Welcome, {{ user.username }} <img src="{{MEDIA_URL}}{{user.profile_picture}}"></li>
           <li class="active"><a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
           {% else %}
           <li class="active">Login with </li>
