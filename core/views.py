@@ -47,7 +47,7 @@ class MyUserView(View):
 
     def get(self, request, username):
         try:
-            user = MyUser.objects.get(name=username)
+            user = MyUser.objects.get(username=username)
         except MyUser.DoesNotExist:
             raise Http404
         return render(request, 'core/user.html', {'user': user})
