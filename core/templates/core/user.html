@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ user.username }}</h2>
-    {% load bookmarks_tags %}
-    {% bookmark_form for user %}
-    </ul>
+    <img src="{{MEDIA_URL}}{{user.profile_picture}}">
+    <h2>{{ user.full_name }}</h2>
+    <p>Registration date: {{ user.reg_date }}</p>
 {% endblock %}
