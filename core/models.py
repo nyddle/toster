@@ -61,6 +61,20 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         return self.username
 
 
+class UserProfile(models.Model):
+    """
+    User profile. Storage for additional information about user.
+    """
+    user = models.OneToOneField(MyUser)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=60, blank=True)
+    about = models.TextField(blank=True)
+    user_avatar = models.ImageField(upload_to='avatar/', default='avatar/default.png')
+
+    def __str__(self):
+        return 'Profile of user: %s' % self.user.username
+
+
 class Question(models.Model):
     question = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, default="")
