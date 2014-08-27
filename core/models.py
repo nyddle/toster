@@ -40,6 +40,7 @@ class MyUserManager(DjangoMyUserManager):
 
 class MyUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=200, unique=True)
+    full_name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(blank=True, null=True)
     reg_date = models.DateTimeField('date registered', auto_now_add=True)
     rating = models.IntegerField(default=0)

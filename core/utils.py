@@ -1,27 +1,27 @@
 from django.core.files.base import ContentFile
-from social.pipeline.user import get_username as social_get_username
 from requests import request, HTTPError
 
 
-def get_username(strategy, details, user=None, *args, **kwargs):
-    """
-    Returns username without hash using python-social-auth
-    """
-    result = social_get_username(strategy, details, user=user, *args, **kwargs)
-    return result
-
-
-def save_user_avatar(strategy, user, response, details, is_new, *args, **kwargs):
+def save_user_profile(strategy, user, response, details, is_new, *args, **kwargs):
     """
     Save user avatar using python-social-auth
     """
-    url = ''
+    print("getting social avatar...")
+    url = None
+    full_name = ''
     if strategy.backend.name == 'facebook':
         url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
-    #elif strategy.backend.name == 'google':
+        full_name = response["first_name"] + " " + response["last_name"]
+        print(full_name)
+
+    elif strategy.backend.name == 'google':
+        #todo make google work
         #url = response["picture"]
+        #full_name = response["first_name"]
+        pass
     elif strategy.backend.name == 'twitter':
         url = response["profile_image_url"]
+        full_name = response["screen_name"]
 
     if url:
         try:
@@ -31,4 +31,5 @@ def save_user_avatar(strategy, user, response, details, is_new, *args, **kwargs)
             pass
         else:
             user.profile_picture.save('{0}_social.jpg'.format(user.username), ContentFile(response.content))
+            user.full_name = full_name
             user.save()

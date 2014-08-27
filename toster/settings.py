@@ -168,12 +168,12 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.get_username',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'core.utils.get_username',
-    'core.utils.save_user_avatar',
+    'core.utils.save_user_profile',
 )
 
 # must be hidden on deploy
@@ -186,9 +186,9 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '6dcc7811568673cfc3cb508f4486e7ad'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'en_US'}
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '953708137662-4pcmcm55h2ce7j6igoh1gett2ifhib94.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mTdeDUSCVJOZYeTZvE20RHZp'
-SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
+SOCIAL_AUTH_GOOGLE_PLUS_KEY = '953708137662-4pcmcm55h2ce7j6igoh1gett2ifhib94.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'mTdeDUSCVJOZYeTZvE20RHZp'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.profile'
 ]
 
