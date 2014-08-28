@@ -13,7 +13,8 @@
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
     {% block css %}
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -61,7 +62,6 @@
           {% else %}
           <li class="active">Login with </li>
           <li class="active"><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Goggle</a></li>
-
           <li class="active"><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a></li>
           <li class="active"><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Twitter</a></li>
           {% endif %}
@@ -98,7 +98,7 @@
       <!-- Your stuff: Third-party javascript libraries go here -->
       <script src="{% static 'js/bookmarks/bookmarks.js' %}" type="text/javascript"></script>
       <!-- place project specific Javascript in this file -->
-      <!-- <script src="{% static 'js/project.js' %}"></script> --!>
+      <!-- <script src="{% static 'js/project.js' %}"></script> -->
     {% endblock javascript %}
   </body>
 </html>

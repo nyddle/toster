@@ -188,8 +188,8 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'en_US'}
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '953708137662-4pcmcm55h2ce7j6igoh1gett2ifhib94.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mTdeDUSCVJOZYeTZvE20RHZp'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-    'https://www.googleapis.com/auth/userinfo.profile'
+SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
+    'https://www.googleapis.com/auth/plus.login'
 ]
 
 LOGIN_URL = '/login/'

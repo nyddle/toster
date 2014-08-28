@@ -14,14 +14,13 @@ def save_user_profile(strategy, user, response, details, is_new, *args, **kwargs
         full_name = response["first_name"] + " " + response["last_name"]
         print(full_name)
 
-    elif strategy.backend.name == 'google':
-        #todo make google work
-        #url = response["picture"]
-        #full_name = response["first_name"]
+    elif strategy.backend.name == 'google-oauth2':
+        url = response["image"]["url"]
+        full_name = response["displayName"]
         pass
     elif strategy.backend.name == 'twitter':
         url = response["profile_image_url"]
-        full_name = response["screen_name"]
+        full_name = response["name"]
 
     if url:
         try:
@@ -33,3 +32,6 @@ def save_user_profile(strategy, user, response, details, is_new, *args, **kwargs
             user.profile_picture.save('{0}_social.jpg'.format(user.username), ContentFile(response.content))
             user.full_name = full_name
             user.save()
+
+def avatar_file_name(instance, filename):
+    return '/'.join(['avatar', instance.username, filename])

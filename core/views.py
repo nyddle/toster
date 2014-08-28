@@ -50,7 +50,7 @@ class MyUserView(View):
             user = MyUser.objects.get(username=username)
         except MyUser.DoesNotExist:
             raise Http404
-        return render(request, 'core/user.html', {'user': user})
+        return render(request, 'core/user.html', {'viewed_user': user})
 
 
 #TODO: merge with popular view

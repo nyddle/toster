@@ -15,6 +15,8 @@ from bookmarks.handlers import library
 # this is for activity stream
 from actstream import registry, action
 
+from .utils import *
+
 
 class MyUserManager(DjangoMyUserManager):
     def _create_user(self, username, email, password,
@@ -47,7 +49,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     about = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    profile_picture = models.ImageField(upload_to='avatar/', default='avatar/default.png')
+    profile_picture = models.ImageField(upload_to=avatar_file_name, default='avatar/default.png')
 
     objects = MyUserManager()
 

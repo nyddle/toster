@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <img src="{{MEDIA_URL}}{{user.profile_picture}}">
-    <h2>{{ user.full_name }}</h2>
-    <p>Registration date: {{ user.reg_date }}</p>
+    <img src="{{MEDIA_URL}}{{viewed_user.profile_picture}}">
+    <h2>{{ viewed_user.full_name }}</h2>
+    <p>Registration date: {{ viewed_user.reg_date }}</p>
+
+    {% if user == viewed_user %}
+        TROLL!
+    {% endif %}
 {% endblock %}
